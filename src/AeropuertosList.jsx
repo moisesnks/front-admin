@@ -15,48 +15,48 @@ const AeropuertosList = () => {
 
     useEffect(() => {
         const fetchDataAeropuertos = async () => {
-            try {
-                const response = await axios.get('http://localhost:9090/all_aeropuertos');
-                aeropuertosIniciales.current = response.data;
-                setAeropuertos(response.data);
-                setLoadingAeropuertos(false);
-            } catch (error) {
-                console.error('Error fetching aeropuertos:', error);
-                setLoadingAeropuertos(false);
-            }
+          try {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/all_aeropuertos`);
+            aeropuertosIniciales.current = response.data;
+            setAeropuertos(response.data);
+            setLoadingAeropuertos(false);
+          } catch (error) {
+            console.error('Error fetching aeropuertos:', error);
+            setLoadingAeropuertos(false);
+          }
         };
-
+    
         const fetchDataPaises = async () => {
-            try {
-                const response = await axios.get('http://localhost:9090/all_paises');
-                setPaises(response.data);
-                setLoadingPaises(false);
-            } catch (error) {
-                console.error('Error fetching paises:', error);
-                setLoadingPaises(false);
-            }
+          try {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/all_paises`);
+            setPaises(response.data);
+            setLoadingPaises(false);
+          } catch (error) {
+            console.error('Error fetching paises:', error);
+            setLoadingPaises(false);
+          }
         };
-
+    
         fetchDataAeropuertos();
         fetchDataPaises();
-    }, []); // Se ejecutará una vez al montar el componente
-
-    useEffect(() => {
+      }, []); // Se ejecutará una vez al montar el componente
+    
+      useEffect(() => {
         const fetchAeropuertosFiltrados = async () => {
-            try {
-                setLoadingAeropuertos(true);
-                const data = aeropuertosIniciales.current;
-                const aeropuertosFiltrados = filtroPais ? data.filter((aeropuerto) => aeropuerto.pais_id === filtroPais) : data;
-                setAeropuertos(aeropuertosFiltrados);
-            } catch (error) {
-                console.error('Error fetching aeropuertos:', error);
-            } finally {
-                setLoadingAeropuertos(false);
-            }
+          try {
+            setLoadingAeropuertos(true);
+            const data = aeropuertosIniciales.current;
+            const aeropuertosFiltrados = filtroPais ? data.filter((aeropuerto) => aeropuerto.pais_id === filtroPais) : data;
+            setAeropuertos(aeropuertosFiltrados);
+          } catch (error) {
+            console.error('Error fetching aeropuertos:', error);
+          } finally {
+            setLoadingAeropuertos(false);
+          }
         };
-
+    
         fetchAeropuertosFiltrados();
-    }, [filtroPais]);
+      }, [filtroPais]);
 
     const handleFiltroPais = (paisId) => {
         setFiltroPais(paisId);

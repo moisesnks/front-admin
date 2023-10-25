@@ -5,7 +5,7 @@ const CiudadesList = () => {
 
   useEffect(() => {
     // Realizar la solicitud fetch al servidor local
-    fetch('http://localhost:9090/all_ciudades')
+    fetch(`${import.meta.env.VITE_API_URL}/all_ciudades`)
       .then((response) => response.json())
       .then((data) => setCiudades(data))
       .catch((error) => console.error('Error fetching data:', error));

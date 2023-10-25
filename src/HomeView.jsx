@@ -18,6 +18,11 @@ const HomeView = () => {
                         <p> Ciudades </p>
                     </Link>
                 </div>
+                <div className="aeropuerto-link">
+                    <Link to="/paises">
+                        <p> Paises </p>
+                    </Link>
+                </div>
             </div>
         </div>
     );
