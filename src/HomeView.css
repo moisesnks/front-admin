@@ -1,0 +1,38 @@
+:root {
+    --background-color: #e6dc1c;
+    --container-height: 85vh;
+    --container-width: 85vw;
+    --box-height: 6em;
+    --box-width: 6em;
+    --container-padding: 1rem;
+    --box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.29);
+    --text-color: #000000;
+}
+
+.contenedor-apps {
+    width: var(--container-width);
+    height: var(--container-height);
+    background: var(--background-color);
+    border-radius: 1em;
+    padding: 1rem;
+
+}
+
+.aeropuerto-link {
+    background: white;
+    width: var(--box-width);
+    height: var(--box-height);
+    border-radius: 1em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    width: 100%;
+}
+
+.aeropuerto-link:hover {
+    cursor: pointer;
+}
