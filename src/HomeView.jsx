@@ -23,6 +23,11 @@ const HomeView = () => {
                         <p> Paises </p>
                     </Link>
                 </div>
+                <div className="aeropuerto-link">
+                    <Link to="/paquetes">
+                        <p> Paquetes </p>
+                    </Link>
+                </div>
             </div>
         </div>
     );
