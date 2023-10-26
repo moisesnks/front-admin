@@ -1,0 +1,23 @@
+.image-uploader-container {
+    margin-top: 20px;
+}
+
+.image-uploader-container input {
+    margin-right: 10px;
+}
+
+.image-uploader-container button {
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+}
+
+.image-uploader-container button:disabled {
+    background-color: #cccccc;
+}
+
+.image-uploader-container div {
+    margin-top: 10px;
+}

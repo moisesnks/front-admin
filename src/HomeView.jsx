@@ -28,6 +28,12 @@ const HomeView = () => {
                         <p> Paquetes </p>
                     </Link>
                 </div>
+                <div className="aeropuerto-link">
+                    <Link to="/upload_image">
+                        <p> Subir Imagen </p>
+                    </Link>
+                </div>
+
             </div>
         </div>
     );

@@ -91,5 +91,5 @@ hr {
 
 .aeropuerto:hover {
     cursor: pointer;
-    border-inline: 2px solid #3498db;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.8);
 }
