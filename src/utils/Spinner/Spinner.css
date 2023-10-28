@@ -1,9 +1,15 @@
 /* Spinner.css */
 .spinner-container {
+    position: relative;
+    width: calc(100vw - 6rem);
+    height: 80vh;
+    /* Ajusta el color de fondo y la opacidad según sea necesario */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    z-index: 999;
+    /* Ajusta según sea necesario */
+    background: inherit;
 }
 
 .spinner {

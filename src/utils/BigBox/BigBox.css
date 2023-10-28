@@ -1,0 +1,38 @@
+:root {
+    --scrollbar-thumb: #888;
+    --scrollbar-track: #f5f5f5;
+    --big-box: #023047d7;
+}
+
+.bigbox {
+    top: 1rem;
+    width: calc(100vw - 2rem);
+    height: 90vh;
+    background: var(--big-box);
+    margin: 0 auto;
+    position: relative;
+    margin-top: auto;
+    bottom: 1rem;
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+    user-select: none;
+    overflow: auto;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+}
+
+/* Fallback para navegadores que no admiten scrollbar-width */
+.bigbox::-webkit-scrollbar {
+    width: 8px;
+}
+
+.bigbox::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 4px;
+}
+
+.bigbox::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track);
+}

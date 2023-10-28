@@ -1,11 +1,11 @@
-// Archivo AeropuertosList.js
+// Archivo Aeropuertos.js
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 import './Aeropuertos.css';
-import Spinner from './Spinner';
+import Spinner from '../../utils/Spinner';
 
-const AeropuertosList = () => {
+export default function Aeropuertos() {
   const [aeropuertos, setAeropuertos] = useState([]);
   const [loadingAeropuertos, setLoadingAeropuertos] = useState(true);
   const [filtroPais, setFiltroPais] = useState(null);
@@ -104,4 +104,4 @@ const AeropuertosList = () => {
   );
 };
 
-export default AeropuertosList;
+

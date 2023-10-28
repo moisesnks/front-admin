@@ -1,0 +1,78 @@
+:root {
+    --color-fondo: #f2f2f2;
+    --color-enlace: #333;
+    --color-enlace-hover: #666;
+    --ancho-contenedor: 100%;
+    --max-ancho-contenedor: 1200px;
+    --padding-contenedor: 20px;
+    --box-height: 200px;
+    --gradient-primary: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+}
+
+.contenedor-apps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: var(--ancho-contenedor);
+    max-width: var(--max-ancho-contenedor);
+    margin: 0 auto;
+    padding: var(--padding-contenedor);
+}
+
+.aeropuerto-link {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    height: var(--box-height);
+    /* Cambiado de max-height a height */
+    width: var(--box-height);
+    /* Cambiado de max-width a width */
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.aeropuerto-link a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.aeropuerto-link p {
+    min-width: 12rem;
+    position: absolute;
+    padding: 0.5rem;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 8rem;
+    background: var(--gradient-primary);
+    border-radius: 1rem;
+
+}
+
+.aeropuerto-link img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    max-height: 100%;
+    /* Limita el tamaño máximo de la imagen */
+    max-width: 100%;
+}
+
+.aeropuerto-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.aeropuerto-link a {
+    text-decoration: none;
+    color: var(--color-enlace);
+}
+
+.aeropuerto-link a:hover {
+    color: var(--color-enlace-hover);
+}

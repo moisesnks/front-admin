@@ -1,0 +1,18 @@
+/* Clock.css */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap');
+
+
+/* Clock.css */
+.time-part,
+.clock {
+    font-size: 2rem;
+    margin: 0 5px;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #fff;
+}
+
+.time-part:hover {
+    color: #219EBC;
+    /* Cambia el color al hacer hover */
+    cursor: pointer;
+}

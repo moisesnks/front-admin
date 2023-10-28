@@ -1,8 +1,8 @@
 // Spinner.jsx
 import React from 'react';
-import './Spinner.css'; // Asegúrate de tener el estilo CSS para tu spinner
+import './Spinner.css';
 
-const Spinner = () => {
+export default function Spinner() {
     return (
         <div className="spinner-container">
             <div className="spinner"></div>
@@ -10,4 +10,4 @@ const Spinner = () => {
     );
 };
 
-export default Spinner;
+

@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import './Paises.css';
+import Spinner from '../../utils/Spinner';
 
-function PaisesList() {
+export default function Paises() {
   const [paises, setPaises] = useState([]);
+  const [loadingPaises, setLoadingPaises] = useState(true);
 
   useEffect(() => {
     async function fetchPaises() {
       try {
         const apiUrl = `${import.meta.env.VITE_API_URL}/all_paises`;
         const response = await fetch(apiUrl);
-        
+
         if (response.ok) {
           const data = await response.json();
           setPaises(data);
@@ -17,6 +20,8 @@ function PaisesList() {
         }
       } catch (error) {
         console.error('Error de red', error);
+      } finally {
+        setLoadingPaises(false); // Indica que la carga ha terminado, ya sea con éxito o error
       }
     }
 
@@ -25,16 +30,20 @@ function PaisesList() {
 
   return (
     <div>
-      <h1>Lista de Países jajaajja</h1>
-      <ul>
-        {paises.map((pais) => (
-          <li key={pais.id}>
-            {pais.nombre} - {pais.abreviacion}
-          </li>
-        ))}
-      </ul>
+      {loadingPaises ? (
+        <Spinner />
+      ) : (
+        <>
+          <h1>Lista de Países</h1>
+          <ul>
+            {paises.map((pais) => (
+              <li key={pais.id}>
+                {pais.nombre} - {pais.abreviacion}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </div>
   );
 }
-
-export default PaisesList;
