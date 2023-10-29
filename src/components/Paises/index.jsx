@@ -1,31 +1,26 @@
+// src/components/Paises/index.jsx
 import React, { useEffect, useState } from 'react';
 import './Paises.css';
 import Spinner from '../../utils/Spinner';
+import { fetchPaises } from '../../api';
 
 export default function Paises() {
   const [paises, setPaises] = useState([]);
   const [loadingPaises, setLoadingPaises] = useState(true);
 
   useEffect(() => {
-    async function fetchPaises() {
+    const fetchData = async () => {
       try {
-        const apiUrl = `${import.meta.env.VITE_API_URL}/all_paises`;
-        const response = await fetch(apiUrl);
-
-        if (response.ok) {
-          const data = await response.json();
-          setPaises(data);
-        } else {
-          console.error('Error al obtener datos');
-        }
+        const data = await fetchPaises();
+        setPaises(data);
       } catch (error) {
-        console.error('Error de red', error);
+        console.error('Error fetching data:', error);
       } finally {
-        setLoadingPaises(false); // Indica que la carga ha terminado, ya sea con éxito o error
+        setLoadingPaises(false);
       }
-    }
+    };
 
-    fetchPaises();
+    fetchData();
   }, []);
 
   return (

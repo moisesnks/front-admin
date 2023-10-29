@@ -1,31 +1,26 @@
-import React, { useState, useEffect } from 'react';
+// src/components/Paquetes/index.jsx
+import React, { useEffect, useState } from 'react';
 import './Paquetes.css';
 import Spinner from '../../utils/Spinner';
+import { fetchPaquetes } from '../../api';
 
 export default function Paquetes() {
   const [paquetes, setPaquetes] = useState([]);
   const [loadingPaquetes, setLoadingPaquetes] = useState(true);
 
   useEffect(() => {
-    async function fetchPaquetes() {
+    const fetchData = async () => {
       try {
-        const apiUrl = import.meta.env.VITE_API_URL + '/all_paquetes';
-        const response = await fetch(apiUrl);
-
-        if (response.ok) {
-          const data = await response.json();
-          setPaquetes(data);
-        } else {
-          console.error('Error al obtener los paquetes');
-        }
+        const data = await fetchPaquetes();
+        setPaquetes(data);
       } catch (error) {
-        console.error('Error al obtener los paquetes:', error);
+        console.error('Error fetching data:', error);
       } finally {
-        setLoadingPaquetes(false); // Indica que la carga ha terminado, ya sea con éxito o error
+        setLoadingPaquetes(false);
       }
-    }
+    };
 
-    fetchPaquetes();
+    fetchData();
   }, []);
 
   return (

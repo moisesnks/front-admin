@@ -1,9 +1,9 @@
-// Archivo Aeropuertos.js
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import Spinner from '../../utils/Spinner';
+import { fetchAeropuertos } from '../../api';
+import { fetchPaises } from '../../api';
 
 import './Aeropuertos.css';
-import Spinner from '../../utils/Spinner';
 
 export default function Aeropuertos() {
   const [aeropuertos, setAeropuertos] = useState([]);
@@ -15,35 +15,29 @@ export default function Aeropuertos() {
   const aeropuertosIniciales = useRef([]);
 
   useEffect(() => {
-    const fetchDataAeropuertos = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/all_aeropuertos`);
-        aeropuertosIniciales.current = response.data;
-        setAeropuertos(response.data);
-        setLoadingAeropuertos(false);
-      } catch (error) {
-        console.error('Error fetching aeropuertos:', error);
-        setLoadingAeropuertos(false);
-      }
-    };
+        const aeropuertosData = await fetchAeropuertos();
+        const paisesData = await fetchPaises();
 
-    const fetchDataPaises = async () => {
-      try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/all_paises`);
-        setPaises(response.data);
+        aeropuertosIniciales.current = aeropuertosData;
+        setAeropuertos(aeropuertosData);
+        setLoadingAeropuertos(false);
+
+        setPaises(paisesData);
         setLoadingPaises(false);
       } catch (error) {
-        console.error('Error fetching paises:', error);
+        console.error('Error fetching data:', error);
+        setLoadingAeropuertos(false);
         setLoadingPaises(false);
       }
     };
 
-    fetchDataAeropuertos();
-    fetchDataPaises();
-  }, []); // Se ejecutará una vez al montar el componente
+    fetchData();
+  }, []);
 
   useEffect(() => {
-    const fetchAeropuertosFiltrados = async () => {
+    const fetchAeropuertosFiltrados = () => {
       try {
         setLoadingAeropuertos(true);
         const data = aeropuertosIniciales.current;
@@ -102,6 +96,4 @@ export default function Aeropuertos() {
       </div>
     </div>
   );
-};
-
-
+}

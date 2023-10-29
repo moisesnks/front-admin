@@ -1,6 +1,8 @@
+// src/components/Ciudades/index.jsx
 import React, { useState, useEffect } from 'react';
 import './Ciudades.css';
-import Spinner from '../../utils/Spinner'; // Asegúrate de importar el Spinner desde la ubicación correcta
+import Spinner from '../../utils/Spinner';
+import { fetchCiudades } from '../../api';
 
 export default function Ciudades() {
   const [ciudades, setCiudades] = useState([]);
@@ -9,13 +11,11 @@ export default function Ciudades() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/all_ciudades`);
-        const data = await response.json();
+        const data = await fetchCiudades();
         setCiudades(data);
-        setLoadingCiudades(false); // Indica que la carga ha terminado
+        setLoadingCiudades(false);
       } catch (error) {
-        console.error('Error fetching data:', error);
-        setLoadingCiudades(false); // En caso de error, también indica que la carga ha terminado
+        setLoadingCiudades(false);
       }
     };
 
@@ -42,4 +42,4 @@ export default function Ciudades() {
       )}
     </div>
   );
-};
+}

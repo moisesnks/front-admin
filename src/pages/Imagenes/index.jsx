@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from '../../utils/Header'
 import BigBox from '../../utils/BigBox'
-import SubirImagen from '../../components/SubirImagen'
+import Imagenes from '../../components/ImagenesListar'
+import SubirImagen from '../../components/ImagenesSubir'
 
 
 export default function ImagenesView() {
@@ -9,7 +10,9 @@ export default function ImagenesView() {
         <div>
             <Header title="Imágenes" />
             <BigBox>
+
                 <SubirImagen />
+                <Imagenes />
             </BigBox>
         </div>
     );
