@@ -97,7 +97,7 @@ export default function Usuarios() {
             <div className="usuarioContenedor ">
               <div className="usuarioLista ">
                 {filteredUsuarios.map((usuario) => (
-                  <UsuarioCard usuario={usuario} key={usuario.id} />
+                  <UsuarioCard usuario={usuario} />
                 ))}
               </div>
             </div>

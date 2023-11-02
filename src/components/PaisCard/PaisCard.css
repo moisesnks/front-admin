@@ -53,3 +53,7 @@
 
 
 }
+
+.paisCard:active {
+    background: #ddd;
+}

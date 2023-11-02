@@ -6,7 +6,7 @@ export default function UsuarioCard({ usuario }) {
   const imagenURL = `https://storage.googleapis.com/tisw-data-bucket/gallery/${usuario.fotodeperfil}`;
 
   const handleUsuarioCardClick = () => {
-    console.log(`Clic en la tarjeta de ${usuario.nombre} ${usuario.apellido}`);
+    console.log(`Clic en la tarjeta de ${usuario.nombre} ${usuario.apellido}. ID: ${usuario.id}`);
   };
 
   return (

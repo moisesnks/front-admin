@@ -114,6 +114,14 @@
     cursor: pointer;
 }
 
+.paisCrear:active,
+.paisEditar:active,
+.paisBorrar:active {
+
+    background: #ddd;
+
+}
+
 .paisDerecha {
 
     width: 70%;

@@ -28,7 +28,7 @@ export default function Paises() {
 
   function handleBuscar() {
     const term = searchTerm.toLowerCase();
-  
+
     if (term === '') {
       // Restaurar la lista original cuando el término de búsqueda esté vacío
       setFilteredPaises(paises);
@@ -37,7 +37,7 @@ export default function Paises() {
         const nombreSinTildes = pais.nombre
           .normalize('NFD') // Normaliza las tildes a caracteres individuales
           .replace(/[\u0300-\u036f]/g, ''); // Elimina los caracteres diacríticos (tildes)
-  
+
         return (
           nombreSinTildes.toLowerCase().includes(term) || pais.abreviacion.toLowerCase().includes(term)
         );
@@ -45,7 +45,7 @@ export default function Paises() {
       setFilteredPaises(filteredPaises);
     }
   }
-  
+
   function handleCrear() {
     console.log('Boton Crear Presionado');
   }

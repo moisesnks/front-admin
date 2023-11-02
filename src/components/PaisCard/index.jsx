@@ -6,7 +6,7 @@ export default function PaisCard({ pais }) {
   const imagenURL = 'https://storage.googleapis.com/tisw-data-bucket/gallery/CrashBiocoot.webp';
 
   const handlePaisCardClick = () => {
-    console.log(`Clic en la tarjeta de ${pais.nombre}`);
+    console.log(`Clic en la tarjeta de ${pais.nombre} (${pais.abreviacion}). ID: ${pais.id}`);
   };
 
   return (
