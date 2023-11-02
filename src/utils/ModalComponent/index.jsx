@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ModalComponent = ({ title, show, handleClose, handleAccept, bodyContent, backdrop, closeButtonVariant, acceptButtonVariant, error }) => {
     return (

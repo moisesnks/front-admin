@@ -1,0 +1,71 @@
+:root {
+    --altoAeropuertoCard: 13rem;
+    --anchoAeropuertoCard: 21rem;
+    --color-usuarioCard: #ffffff;
+    --color-shadow: rgba(6, 24, 44, 0.65);
+    --color-shadow-inset: rgba(99, 99, 99, 0.2);
+    --color-shadow-hover: rgba(173, 216, 230, 0.9);
+    --color-shadow-inset-hover: rgba(99, 99, 99, 0.2);
+}
+
+.aeropuertoCard {
+    padding-left: 1rem;
+    position: relative;
+    background: var(--color-usuarioCard);
+    width: var(--anchoAeropuertoCard);
+    height: var(--altoAeropuertoCard);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    /* Cambiado a fila para mantener la disposición lineal */
+    align-items: center;
+    box-shadow: var(--color-shadow) 0px 0px 0px 2px, var(--color-shadow) 0px 4px 6px -1px, var(--color-shadow-inset) 0px 1px 0px inset;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.aeropuertoCard img {
+    width: 4rem;
+    /* Ajustado el ancho de la imagen */
+    height: 4rem;
+    /* Ajustado el alto de la imagen */
+    object-fit: cover;
+    border-radius: 0.25rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-right: 1rem;
+    /* Espacio entre la imagen y el texto */
+}
+
+.aeropuertoCardTitulo {
+    flex: 1;
+    padding: 1rem;
+    white-space: normal;
+    /* Cambiado a normal para permitir saltos de línea */
+    overflow: hidden;
+    max-height: 100%;
+    /* Establecido un límite de altura */
+    text-overflow: ellipsis;
+    font-weight: 600;
+}
+
+
+.aeropuertoCardInfo {
+    flex: 1;
+    /* Ajustado para que ocupe el espacio restante */
+    padding: 1rem;
+    /* Añadido relleno para mejorar la legibilidad */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+}
+
+.aeropuertoCard:hover {
+    cursor: pointer;
+    box-shadow: var(--color-shadow-hover) 0px 0px 0px 2px, var(--color-shadow-hover) 0px 4px 6px -1px, var(--color-shadow-inset-hover) 0px 1px 0px inset;
+    transform: translateY(-2px);
+}
+
+.aeropuertoCard:active {
+    background: #ddd;
+}
