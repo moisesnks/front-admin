@@ -1,6 +1,4 @@
-
-
-.paisTitulo{
+.paisTitulo {
     background: orange;
     margin: -1rem -2rem -1rem -2rem;
     position: relative;
@@ -10,14 +8,14 @@
 
 }
 
-.paisTitulo h1{
+.paisTitulo h1 {
 
     color: #fff;
     font-weight: 600;
 
 }
 
-.paisCaja{
+.paisCaja {
 
     background: #fff;
     width: 100%;
@@ -30,7 +28,7 @@
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
-.paisCaja span{
+.paisCaja span {
 
     text-transform: uppercase;
     font-weight: 600;
@@ -39,16 +37,16 @@
 }
 
 
-.paisContenido{
+.paisContenido {
 
     display: flex;
     width: 100%;
     height: 100%;
 
-    
+
 }
 
-.paisIzquierda{
+.paisIzquierda {
 
     display: flex;
     flex-direction: column;
@@ -59,7 +57,7 @@
 
 }
 
-.paisBuscar{
+.paisBuscar {
 
     background: orange;
     display: flex;
@@ -69,7 +67,7 @@
 }
 
 
-.paisBuscar button{
+.paisBuscar button {
 
     padding: 0.5rem;
     border: none;
@@ -78,13 +76,13 @@
 
 }
 
-.paisBuscar button:active{
+.paisBuscar button:active {
 
     background: #ddd;
 
 }
 
-.paisBuscar input{
+.paisBuscar input {
 
     text-align: center;
     margin-bottom: 0.5rem;
@@ -95,7 +93,7 @@
 
 }
 
-.paisCrear{
+.paisCrear {
 
     background: skyblue;
     cursor: pointer;
@@ -104,19 +102,19 @@
 
 
 
-.paisEditar{
+.paisEditar {
 
     background: yellowgreen;
     cursor: pointer;
 }
 
-.paisBorrar{
+.paisBorrar {
 
     background: red;
     cursor: pointer;
 }
 
-.paisDerecha{
+.paisDerecha {
 
     width: 70%;
     height: 100%;
@@ -124,19 +122,19 @@
     justify-content: center;
     align-items: center;
     padding: 2rem;
- 
+
 }
 
 .paisLista {
     display: grid;
-    gap: 1rem;
     width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(var(--anchoPaisCard, 8rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     height: 70vh;
     overflow: auto;
+    justify-items: center;
 
-  }
-  
+}
+
 /* Fallback para navegadores que no admiten scrollbar-width */
 .paisLista::-webkit-scrollbar {
     width: 8px;
@@ -153,4 +151,48 @@
     background-color: #ffffff00;
 }
 
+@media screen and (max-width: 768px) {
+    .paisContenido {
+        flex-direction: column;
+    }
 
+    .paisIzquierda,
+    .paisDerecha {
+        width: 100%;
+    }
+
+    .paisLista {
+        height: auto;
+        overflow: visible;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .paisIzquierda {
+        width: 40%;
+    }
+
+    .paisDerecha {
+        width: 60%;
+    }
+
+    .paisLista {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .paisIzquierda {
+        width: 30%;
+    }
+
+    .paisDerecha {
+        width: 70%;
+    }
+
+    .paisLista {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+    }
+}

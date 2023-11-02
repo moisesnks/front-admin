@@ -1,4 +1,4 @@
-:root{
+:root {
     --anchoPaisCard: 8rem;
 }
 
@@ -33,18 +33,23 @@
     width: 100%;
     text-align: center;
     padding: 0.4rem;
-    white-space: nowrap; /* Evita el salto de línea */
-    overflow: hidden; /* Evita el desbordamiento de texto */
-    text-overflow: ellipsis; /* Muestra el efecto de elipsis */
-    max-width: 100%; /* Establece un ancho máximo */
+    white-space: nowrap;
+    /* Evita el salto de línea */
+    overflow: hidden;
+    /* Evita el desbordamiento de texto */
+    text-overflow: ellipsis;
+    /* Muestra el efecto de elipsis */
+    max-width: 100%;
+    /* Establece un ancho máximo */
+    font-weight: 600;
 
-  }
+}
 
 .paisCard:hover {
 
     cursor: pointer;
     box-shadow: rgba(173, 216, 230, 0.8) 0px 0px 0px 2px, rgba(173, 216, 230, 0.9) 0px 4px 6px -1px, rgba(255, 255, 255, 0.1) 0px 1px 0px inset;
     transform: translateY(-2px);
-   
+
 
 }
