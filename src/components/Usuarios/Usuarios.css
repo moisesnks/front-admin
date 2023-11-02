@@ -104,24 +104,23 @@
 
 .usuarioLista {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajusta el ancho mínimo a 200px y crea columnas automáticamente */
-    grid-auto-rows: 1fr; /* Altura automática */
+    grid-template-columns: repeat(3, 1fr); /* Muestra tres elementos por fila en la vista de escritorio */
     grid-gap: 20px; /* Espacio entre elementos */
     justify-items: stretch;
     align-items: stretch;
   }
   
-  /* Media query para 2 columnas en pantallas más pequeñas */
+  /* Media query para hacer que se muestren 2 elementos por fila en pantallas más pequeñas */
   @media (max-width: 768px) {
     .usuarioLista {
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Ajusta el ancho mínimo a 300px */
+      grid-template-columns: repeat(2, 1fr); /* Cambia a dos elementos por fila */
     }
   }
   
-  /* Media query para 1 columna en pantallas aún más pequeñas */
+  /* Media query para una sola columna en pantallas muy pequeñas */
   @media (max-width: 480px) {
     .usuarioLista {
-      grid-template-columns: 1fr; /* Una columna a pantalla completa */
+      grid-template-columns: 1fr; /* Cambia a un elemento por fila */
     }
   }
   
