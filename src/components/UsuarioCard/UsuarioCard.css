@@ -1,0 +1,51 @@
+:root {
+    --anchoUsuarioCard: 10rem;
+    --color-usuarioCard: #fff;
+    --color-shadow: rgba(6, 24, 44, 0.4);
+    --color-shadow-hover: rgba(173, 216, 230, 0.8);
+    --color-shadow-inset: rgba(255, 255, 255, 0.08);
+    --color-shadow-inset-hover: rgba(255, 255, 255, 0.1);
+    --color-text: #000;
+    --font-size: 1.6rem;
+    --font-weight: 600;
+}
+
+.usuarioCard {
+    position: relative;
+    background: var(--color-usuarioCard);
+    width: calc(3.2*var(--anchoUsuarioCard));
+    height: var(--anchoUsuarioCard);
+    border-radius: 4.875rem;
+    padding: 0.4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: var(--color-shadow) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, var(--color-shadow-inset) 0px 1px 0px inset;
+    transition: all 0.3s ease-in-out;
+    gap: 2rem;
+}
+
+.usuarioCard img {
+    height: var(--anchoUsuarioCard);
+    object-fit: cover;
+    position: relative;
+    margin: -0.4rem;
+    border-radius: 12.5rem;
+    aspect-ratio: 1;
+}
+
+.usuarioCard:hover {
+    cursor: pointer;
+    box-shadow: var(--color-shadow-hover) 0px 0px 0px 2px, rgba(173, 216, 230, 0.9) 0px 4px 6px -1px, var(--color-shadow-inset-hover) 0px 1px 0px inset;
+    transform: translateY(-2px);
+}
+
+.usuarioCardInfo {
+    font-size: var(--font-size);
+    color: var(--color-text);
+}
+
+.nombre {
+    font-weight: var(--font-weight);
+}
+

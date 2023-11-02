@@ -6,6 +6,7 @@ import Paises from '../pages/Paises';
 import Paquetes from '../pages/Paquetes';
 import Imagenes from '../pages/Imagenes';
 import Facturas from '../pages/Facturas';
+import Usuarios from '../pages/Usuarios';
 
 export const routes = [
     { path: "/", component: Home, img_path: "/icons/home.svg", text: "Inicio" },
@@ -15,4 +16,6 @@ export const routes = [
     { path: "/paquetes", component: Paquetes, img_path: "/icons/travel.svg", text: "Paquetes" },
     { path: "/imagenes", component: Imagenes, img_path: "/icons/gallery.svg", text: "Imágenes" },
     { path: "/facturacion", component: Facturas, img_path: "/icons/bill.svg", text: "Facturacion" },
+    { path: "/usuarios", component: Usuarios, img_path: "/icons/user.svg", text: "Usuarios" },
+
 ];

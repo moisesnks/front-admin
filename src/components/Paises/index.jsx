@@ -91,7 +91,7 @@ export default function Paises() {
             <div className="paisDerecha">
               <div className="paisLista">
                 {filteredPaises.map((pais) => (
-                  <PaisCard key={pais.id} pais={pais} />
+                  <PaisCard pais={pais} />
                 ))}
               </div>
             </div>

@@ -10,7 +10,7 @@ export default function PaisCard({ pais }) {
   };
 
   return (
-    <div className="paisCard" onClick={handlePaisCardClick}>
+    <div className="paisCard" key={pais.id} onClick={handlePaisCardClick}>
       <img src={imagenURL} alt={`Imagen de ${pais.nombre}`} />
       <div className="paisCardTitulo">
         <p>{pais.nombre}</p>
