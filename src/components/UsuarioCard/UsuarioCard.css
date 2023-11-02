@@ -1,5 +1,5 @@
 :root {
-    --anchoUsuarioCard: 10rem;
+    --anchoUsuarioCard: 100%;
     --color-usuarioCard: #fff;
     --color-shadow: rgba(6, 24, 44, 0.4);
     --color-shadow-hover: rgba(173, 216, 230, 0.8);
@@ -13,8 +13,8 @@
 .usuarioCard {
     position: relative;
     background: var(--color-usuarioCard);
-    width: calc(3.2*var(--anchoUsuarioCard));
-    height: var(--anchoUsuarioCard);
+    width: 100%;
+    height: 15vh;
     border-radius: 4.875rem;
     padding: 0.4rem;
     display: flex;
@@ -23,10 +23,11 @@
     box-shadow: var(--color-shadow) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, var(--color-shadow-inset) 0px 1px 0px inset;
     transition: all 0.3s ease-in-out;
     gap: 2rem;
+    overflow: hidden;
 }
 
 .usuarioCard img {
-    height: var(--anchoUsuarioCard);
+    height: 100%;
     object-fit: cover;
     position: relative;
     margin: -0.4rem;
@@ -40,6 +41,10 @@
     transform: translateY(-2px);
 }
 
+.usuarioCard:active {
+    background: #ddd;
+}
+
 .usuarioCardInfo {
     font-size: var(--font-size);
     color: var(--color-text);
@@ -48,4 +53,3 @@
 .nombre {
     font-weight: var(--font-weight);
 }
-

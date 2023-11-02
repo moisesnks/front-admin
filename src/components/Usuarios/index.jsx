@@ -28,7 +28,7 @@ export default function Usuarios() {
 
   function handleBuscar() {
     const term = searchTerm.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // Normaliza el término de búsqueda
-  
+
     if (term === '') {
       setFilteredUsuarios(usuarios);
     } else {
@@ -36,7 +36,7 @@ export default function Usuarios() {
         const nombreCompleto = `${usuario.nombre} ${usuario.apellido}`.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // Normaliza el nombre completo
         const rut = usuario.rut.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // Normaliza el RUT
         const email = usuario.email.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // Normaliza el email
-  
+
         return (
           nombreCompleto.includes(term) ||
           rut.includes(term) ||
@@ -46,8 +46,8 @@ export default function Usuarios() {
       setFilteredUsuarios(filteredUsuarios);
     }
   }
-  
-  
+
+
   function handleCrear() {
     console.log('Boton Crear Presionado');
   }
@@ -59,6 +59,8 @@ export default function Usuarios() {
   function handleBorrar() {
     console.log('Boton Borrar Presionado');
   }
+
+
 
   return (
     <div>
@@ -82,13 +84,13 @@ export default function Usuarios() {
               </div>
               <div className="usuarioBotones">
                 <div className="usuarioCrear usuarioCaja " onClick={handleCrear}>
-                    <span>Crear</span>
+                  <span>Crear</span>
                 </div>
                 <div className="usuarioEditar usuarioCaja " onClick={handleEditar}>
-                    <span>Editar</span>
+                  <span>Editar</span>
                 </div>
                 <div className="usuarioBorrar usuarioCaja " onClick={handleBorrar}>
-                    <span>Banear</span>
+                  <span>Banear</span>
                 </div>
               </div>
             </div>
