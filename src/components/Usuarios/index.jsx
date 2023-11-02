@@ -4,6 +4,8 @@ import Spinner from '../../utils/Spinner';
 import ModalComponent from '../../utils/ModalComponent';
 import { fetchUsuarios } from '../../api';
 import UsuarioCard from '../UsuarioCard';
+import Button from 'react-bootstrap/Button';
+
 
 
 export default function Usuarios() {
@@ -161,7 +163,9 @@ export default function Usuarios() {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <button onClick={handleBuscar}>Buscar</button>
+                <Button variant="secondary" onClick={handleBuscar}>Buscar</Button>
+                <Button variant="secondary" onClick={() => setSearchTerm('')}>Limpiar</Button>
+
               </div>
               <div className="usuarioBotones">
                 <div className="usuarioCrear usuarioCaja" onClick={handleCrear}>
