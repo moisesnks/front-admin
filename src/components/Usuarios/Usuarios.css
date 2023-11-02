@@ -71,7 +71,7 @@
 }
 
 .usuarioBuscar button:active {
-    background: #ddd;
+    opacity: 0.5;
 }
 
 .usuarioBuscar button:hover {
@@ -80,15 +80,13 @@
 
 .usuarioBotones {
 
-    display: inline-flex;
+    display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
 
 }
 
 .usuarioBotones .usuarioCaja {
-    padding-left: 5rem;
-    padding-right: 5rem;
     font-size: 1.6em;
     text-transform: uppercase;
     font-weight: 600;
@@ -97,10 +95,7 @@
 
 }
 
-.usuarioBotones .usuarioCaja:hover {
-    box-shadow: var(--color-shadow-hover) 0px 0px 0px 2px, rgba(173, 216, 230, 0.9) 0px 4px 6px -1px, var(--color-shadow-inset-hover) 0px 1px 0px inset;
 
-}
 
 .usuarioBotones .usuarioCaja:active {
     background: #ddd;
@@ -118,18 +113,32 @@
     background: red;
 }
 
+.usuarioSeleccionar {
+
+    background: plum;
+    white-space: nowrap;
+}
+
+
+
+.seleccionado {
+    background: rgb(153, 110, 153);
+
+}
 
 .usuarioLista {
     overflow: auto;
-    height: calc(60vh - 0.75rem);
+    height: calc(60vh - 5rem);
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
     grid-gap: 1rem;
-    /* Espacio entre elementos */
+    grid-auto-rows: minmax(10rem, auto);
+    /* Ajusta el tamaño mínimo y máximo según tus necesidades */
     justify-items: center;
     align-items: center;
 }
+
 
 /* Fallback para navegadores que no admiten scrollbar-width */
 .usuarioLista::-webkit-scrollbar {

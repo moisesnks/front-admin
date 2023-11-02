@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import Spinner from '../../utils/Spinner';
 import { subirImagen } from '../../api/imagenes';
-import Modal from '../../utils/Modal';
 
 import './ImagenesSubir.css';
 
@@ -48,67 +47,63 @@ export default function SubirImagen(props) {
         <div className="subir-imagen-container">
             <button className="subir-imagen-button" onClick={handleOpenModal}>SUBIR IMAGEN</button>
 
-            <Modal
-                isOpen={showModal}
-                onRequestClose={handleCloseModal}
-                contentLabel="Subir Imagen"
-            >
-                <form >
-                    <label className="modal-label upload">
-                        <input className="modal-input" type="file" onChange={handleFileChange} />
-                        {previewUrl && (
-                            <div className="modal-image">
-                                <img src={previewUrl} alt="Previsualización" className="modal-preview" />
-                            </div>
-                        )}
-                    </label>
 
-                    <label className="modal-label">
-                        <span className="modal-text">Cambiar Nombre</span>
-                        <input
-                            className="modal-checkbox"
-                            type="checkbox"
-                            checked={nombreOpcional}
-                            onChange={() => setNombreOpcional(!nombreOpcional)}
-                        />
-                        {nombreOpcional ? (
-                            <input
-                                className="modal-input"
-                                type="text"
-                                value={nuevoNombre}
-                                onChange={(e) => setNuevoNombre(e.target.value)}
-                                onClick={() => setNombreOpcional(true)}
-                                placeholder={selectedFile ? selectedFile.name : 'Nuevo Nombre'}
-                            />
-                        ) : (
-                            <input
-                                className="modal-input"
-                                type="text"
-                                value={selectedFile ? selectedFile.name : ''}
-                                disabled
-                            />
-                        )}
-                    </label>
-                    <label className="modal-label">
-                        <span className="modal-text">(*) Alt:</span>
-                        <input className="modal-input" type="text" value={alt} onChange={(e) => setAlt(e.target.value)} />
-                    </label>
-                    <label className="modal-label">
-                        <span className="modal-text">Descripción</span>
-                        <input className="modal-input" type="text" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
-                    </label>
-                    <button className="modal-button" type="submit" disabled={uploading}>
-                        Subir Imagen
-                    </button>
-                    {(
-                        <button className="modal-button" type="button" onClick={handleCloseModal}>
-                            Cerrar
-                        </button>
+            <form >
+                <label className="modal-label upload">
+                    <input className="modal-input" type="file" onChange={handleFileChange} />
+                    {previewUrl && (
+                        <div className="modal-image">
+                            <img src={previewUrl} alt="Previsualización" className="modal-preview" />
+                        </div>
                     )}
-                </form>
-            </Modal>
+                </label>
+
+                <label className="modal-label">
+                    <span className="modal-text">Cambiar Nombre</span>
+                    <input
+                        className="modal-checkbox"
+                        type="checkbox"
+                        checked={nombreOpcional}
+                        onChange={() => setNombreOpcional(!nombreOpcional)}
+                    />
+                    {nombreOpcional ? (
+                        <input
+                            className="modal-input"
+                            type="text"
+                            value={nuevoNombre}
+                            onChange={(e) => setNuevoNombre(e.target.value)}
+                            onClick={() => setNombreOpcional(true)}
+                            placeholder={selectedFile ? selectedFile.name : 'Nuevo Nombre'}
+                        />
+                    ) : (
+                        <input
+                            className="modal-input"
+                            type="text"
+                            value={selectedFile ? selectedFile.name : ''}
+                            disabled
+                        />
+                    )}
+                </label>
+                <label className="modal-label">
+                    <span className="modal-text">(*) Alt:</span>
+                    <input className="modal-input" type="text" value={alt} onChange={(e) => setAlt(e.target.value)} />
+                </label>
+                <label className="modal-label">
+                    <span className="modal-text">Descripción</span>
+                    <input className="modal-input" type="text" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
+                </label>
+                <button className="modal-button" type="submit" disabled={uploading}>
+                    Subir Imagen
+                </button>
+                {(
+                    <button className="modal-button" type="button" onClick={handleCloseModal}>
+                        Cerrar
+                    </button>
+                )}
+            </form>
 
 
-        </div>
+
+        </div >
     );
 }
