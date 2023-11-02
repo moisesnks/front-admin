@@ -1,0 +1,50 @@
+:root{
+    --anchoPaisCard: 8rem;
+}
+
+
+.paisCard {
+    position: relative;
+    background: #fff;
+    width: var(--anchoPaisCard);
+    height: var(--anchoPaisCard);
+    border-radius: 1rem;
+    padding: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    transition: all 0.3s ease-in-out;
+}
+
+.paisCard img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.paisCardTitulo {
+    position: absolute;
+    bottom: 0;
+    background: rgba(127, 127, 127, 0.5);
+    color: black;
+    width: 100%;
+    text-align: center;
+    padding: 0.4rem;
+    white-space: nowrap; /* Evita el salto de línea */
+    overflow: hidden; /* Evita el desbordamiento de texto */
+    text-overflow: ellipsis; /* Muestra el efecto de elipsis */
+    max-width: 100%; /* Establece un ancho máximo */
+
+  }
+
+.paisCard:hover {
+
+    cursor: pointer;
+    box-shadow: rgba(173, 216, 230, 0.8) 0px 0px 0px 2px, rgba(173, 216, 230, 0.9) 0px 4px 6px -1px, rgba(255, 255, 255, 0.1) 0px 1px 0px inset;
+    transform: translateY(-2px);
+   
+
+}
