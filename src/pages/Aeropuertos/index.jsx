@@ -26,6 +26,7 @@ export default function AeropuertosPage() {
     const [filtroCiudad, setFiltroCiudad] = useState(null); // Filtro de ciudad
     const [botonPresionado, setBotonPresionado] = useState(null); // Botón presionado
     const [allAeropuertosSelected, setAllAeropuertosSelected] = useState(false); // Indicador de si todos los aeropuertos están seleccionados
+    const [selectedAirportInfo, setSelectedAirportInfo] = useState([]);  //  estado para la información de aeropuertos seleccionados
     const [showModal, setShowModal] = useState(false); // Mostrar u ocultar modal
     const [modalBody, setModalBody] = useState(null); // Contenido del modal
 
@@ -98,6 +99,21 @@ export default function AeropuertosPage() {
 
     // Fin de los UseEffect para cargar los datos iniciales en AeropuertoLista
 
+    // Efecto para actualizar selectedAirportInfo cuando cambian los aeropuertos seleccionados
+    useEffect(() => {
+        const updatedSelectedAirportInfo = selectedAeropuertos.map((aeropuertoId) => {
+            const aeropuertoDetails = aeropuertos.find((aeropuerto) => aeropuerto.id === aeropuertoId);
+            return {
+                id: aeropuertoDetails.id,
+                nombre: aeropuertoDetails.nombre,
+                nombre_ciudad: aeropuertoDetails.nombre_ciudad,
+                nombre_pais: aeropuertoDetails.nombre_pais,
+            };
+        });
+        setSelectedAirportInfo(updatedSelectedAirportInfo);
+    }, [selectedAeropuertos, aeropuertos]);
+    // Fin del useEffect para actualizar selectedAirportInfo
+
     // Handlers para AeropuertoCard
     const handleCardClick = (aeropuertoId) => {
         setSelectedAeropuertos((prevSelected) => {
@@ -148,6 +164,31 @@ export default function AeropuertosPage() {
         setAllAeropuertosSelected((prev) => !prev);
     };
 
+    // función para showBanModal para eliminar
+    const handleDelete = () => {
+        console.log("Aeropuertos seleccionados:", selectedAeropuertos);
+
+        const deleteModalBody = selectedAirportInfo.length < 1 ? (
+            <p>Debes seleccionar al menos un aeropuerto.</p>
+        ) : (
+            <div>
+                <p>¿Estás seguro de que quieres eliminar los siguientes aeropuertos?</p>
+
+                <div className="modalContent">
+                    <ul>
+                        {selectedAirportInfo.map((info) => (
+                            <li key={info.id}> [ {info.id} ] {info.nombre} </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        );
+
+        setModalBody(deleteModalBody);
+        setShowModal(true);
+    };
+
+
     return (
         <div>
             <Header title="Aeropuertos" />
@@ -180,14 +221,11 @@ export default function AeropuertosPage() {
                                 <div className="aeropuertoSelectLista">
                                     {selectedAeropuertos && selectedAeropuertos.length > 0 ? (
                                         <div className="aeropuertoDetails">
-                                            {selectedAeropuertos.map((aeropuertoId) => {
-                                                const aeropuertoDetails = aeropuertos.find((aeropuerto) => aeropuerto.id === aeropuertoId);
-                                                return (
-                                                    <p key={aeropuertoId} className="aeropuertoDetalle">
-                                                        {`[ ${aeropuertoDetails.id} ] ${aeropuertoDetails.nombre}, ${aeropuertoDetails.nombre_ciudad}, ${aeropuertoDetails.nombre_pais}`}
-                                                    </p>
-                                                );
-                                            })}
+                                            {selectedAirportInfo.map((info, index) => (
+                                                <p key={index} className="aeropuertoDetalle">
+                                                    {`[ ${info.id} ] ${info.nombre}, ${info.nombre_ciudad}, ${info.nombre_pais}`}
+                                                </p>
+                                            ))}
                                         </div>
                                     ) : (
                                         <p>No hay aeropuertos seleccionados.</p>
@@ -197,6 +235,7 @@ export default function AeropuertosPage() {
 
                             <div className="aeropuerto-crud">
                                 <AeropuertoCRUD
+                                    onDelete={handleDelete}
                                     selectedAeropuertos={selectedAeropuertos}
                                     onHandleCancel={handleCancel}
                                 />
@@ -219,6 +258,17 @@ export default function AeropuertosPage() {
                     </div>
                 )}
             </BigBox>
+            <ModalComponent
+                title={selectedAeropuertos.length > 1 ? "ELIMINAR" : "ELIMINAR VARIOS"}
+                show={showModal}
+                handleClose={() => setShowModal(false)}
+                bodyContent={modalBody || ''}
+                closeButtonVariant="danger"
+                acceptButtonVariant="success"
+                handleAccept={selectedAeropuertos.length > 0 ? handleDelete : () => { }}
+                error={selectedAeropuertos.length < 1}
+            />
+
         </div>
     );
 }

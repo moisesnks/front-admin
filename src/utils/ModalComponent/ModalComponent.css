@@ -1,0 +1,41 @@
+.modal-body ul {
+    padding: 0 !important;
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+
+
+.modal-body li {
+    width: 100% !important;
+    list-style: none !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    border-radius: 1em;
+    background-color: #d926263b;
+    padding: 0.3rem !important;
+}
+
+.modal-body .modalContent {
+    overflow-y: auto;
+    max-height: 60vh !important;
+}
+
+.modal-body .modalContent::-webkit-scrollbar {
+    width: 8px;
+    /* Ancho del scrollbar */
+}
+
+.modal-body .modalContent::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.modal-body .modalContent::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+    /* Radio de las esquinas del thumb (barra deslizante) */
+}

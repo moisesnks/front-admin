@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import './AeropuertoCRUD.css';
 
-export default function AeropuertoCRUD({ selectedAeropuertos, onHandleCancel }) {
+export default function AeropuertoCRUD({ onDelete, selectedAeropuertos, onHandleCancel }) {
 
 
 
@@ -34,6 +34,7 @@ export default function AeropuertoCRUD({ selectedAeropuertos, onHandleCancel }) 
 
             {/* Boton para eliminar*/}
             <Button
+                onClick={onDelete}
                 variant="danger"
                 disabled={selectedAeropuertos.length === 0}
             >
