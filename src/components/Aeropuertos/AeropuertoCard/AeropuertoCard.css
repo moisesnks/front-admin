@@ -1,0 +1,86 @@
+:root {
+    --altoAeropuertoCard: 8rem;
+    --anchoAeropuertoCard: 100%;
+    --color-usuarioCard: #ffffff;
+    --color-shadow: rgba(6, 24, 44, 0.65);
+    --color-shadow-inset: rgba(99, 99, 99, 0.2);
+    --color-shadow-hover: rgba(173, 216, 230, 0.9);
+    --color-shadow-inset-hover: rgba(99, 99, 99, 0.2);
+}
+
+.aeropuertoCard {
+    position: relative;
+    background: var(--color-usuarioCard);
+    width: var(--anchoAeropuertoCard);
+    height: var(--altoAeropuertoCard);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    align-items: center;
+    padding-left: 1rem;
+    gap: 0.5rem;
+}
+
+.aeropuertoCard img {
+    width: 5rem;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.aeropuertoCardInfo {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    width: 85%;
+    overflow: hidden;
+}
+
+.aeropuertoCard:hover {
+    cursor: pointer;
+    box-shadow: var(--color-shadow-hover) 0px 0px 0px 2px, var(--color-shadow-hover) 0px 4px 6px -1px, var(--color-shadow-inset-hover) 0px 1px 0px inset;
+    transform: translateY(-2px);
+}
+
+.aeropuertoCardTitulo {
+    display: flex;
+    flex-direction: column;
+    line-height: 0.9;
+    height: 50%;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    justify-content: center;
+    padding: 0.5em;
+    font-weight: 600;
+    padding-top: 1rem;
+
+}
+
+.aeropuertoCardInfo hr {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.aeropuertoCardDesc {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 0rem -0.5rem 0rem 0rem;
+    height: 50%;
+    font-weight: 600;
+}
+
+.aeropuertoCard:active {
+    background: #ddd;
+}
+
+.selected {
+    background: yellow;
+}

@@ -1,0 +1,14 @@
+.aeropuertoCrud {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 90%;
+    position: relative;
+    bottom: 0;
+}
+
+.aeropuertoCrud Button {
+    padding: 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
