@@ -1,30 +1,33 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Button } from 'react-bootstrap';
+
 import AeropuertoLista from '../../components/Aeropuertos/AeropuertoLista';
 import AeropuertoCRUD from '../../components/Aeropuertos/AeropuertoCRUD';
+
 import Header from '../../utils/Header';
 import BigBox from '../../utils/BigBox';
+import Spinner from '../../utils/Spinner';
+import ModalComponent from '../../utils/ModalComponent';
+
 import './Aeropuertos.css';
-import { Button } from 'react-bootstrap';
 
 import { fetchAeropuertos, fetchPaises, fetchCiudades } from '../../api';
 
-
 export default function AeropuertosPage() {
-    const [aeropuertos, setAeropuertos] = useState([]);
-    const [paises, setPaises] = useState([]);
-    const [ciudades, setCiudades] = useState([]);
-    const [selectedAeropuertos, setSelectedAeropuertos] = useState([]);
-    const aeropuertosIniciales = useRef([]);
-    const [loadingAeropuertos, setLoadingAeropuertos] = useState(true);
-    const [loadingPaises, setLoadingPaises] = useState(true);
-    const [loadingCiudades, setLoadingCiudades] = useState(true);
-    const [filtroPais, setFiltroPais] = useState(null);
-    const [filtroCiudad, setFiltroCiudad] = useState(null);
-    const [botonPresionado, setBotonPresionado] = useState(null);
-    const [allAeropuertosSelected, setAllAeropuertosSelected] = useState(false);
-
-
-
+    const [aeropuertos, setAeropuertos] = useState([]); // Datos de aeropuertos
+    const [paises, setPaises] = useState([]); // Datos de países
+    const [ciudades, setCiudades] = useState([]); // Datos de ciudades
+    const [selectedAeropuertos, setSelectedAeropuertos] = useState([]); // Aeropuertos seleccionados
+    const aeropuertosIniciales = useRef([]); // Referencia para almacenar los aeropuertos iniciales
+    const [loadingAeropuertos, setLoadingAeropuertos] = useState(true); // Indicador de carga de aeropuertos
+    const [loadingPaises, setLoadingPaises] = useState(true); // Indicador de carga de países
+    const [loadingCiudades, setLoadingCiudades] = useState(true); // Indicador de carga de ciudades
+    const [filtroPais, setFiltroPais] = useState(null); // Filtro de país
+    const [filtroCiudad, setFiltroCiudad] = useState(null); // Filtro de ciudad
+    const [botonPresionado, setBotonPresionado] = useState(null); // Botón presionado
+    const [allAeropuertosSelected, setAllAeropuertosSelected] = useState(false); // Indicador de si todos los aeropuertos están seleccionados
+    const [showModal, setShowModal] = useState(false); // Mostrar u ocultar modal
+    const [modalBody, setModalBody] = useState(null); // Contenido del modal
 
 
     // useEffect para cargar los datos iniciales en AeropuertoLista
@@ -112,7 +115,6 @@ export default function AeropuertosPage() {
 
     // Handlers para AeropuertoCRUD
     const handleCancel = () => {
-        console.log("HandleCancel en AeropuertosPage");
         setSelectedAeropuertos([]);
     };
     // Fin de los handlers para AeropuertoCRUD
@@ -153,65 +155,69 @@ export default function AeropuertosPage() {
                 <div className="aeropuertoTitulo">
                     <h1>Administrador de Aeropuertos</h1>
                 </div>
-                <div className="aeropuerto-content">
-                    <div className="aeropuerto-izq">
-                        <div className="aeropuertosSeleccionados">
-                            <div className="aeropuertosTituloSelected">
-                                <h3>Aeropuertos Seleccionados</h3>
-                                {/* Botón para seleccionar todos los aeropuertos */}
-                                <div className="selectedContent">
-                                    <Button
-                                        className='btn-select-all'
-                                        onClick={handleSelectAllAeropuertos}
-                                        variant={allAeropuertosSelected ? 'danger' : 'primary'}
-                                    >
-                                        {allAeropuertosSelected ? "Deseleccionar Todos" : "Seleccionar Todos"}
-                                    </Button>
-                                    {/* Contador de aeropuertos seleccionados */}
-                                    <p className="aeropuertosSeleccionadosCount">{`${selectedAeropuertos.length} `}</p>
+                {loadingAeropuertos && loadingCiudades && loadingPaises ? (
+                    <Spinner />
+                ) : (
+                    <div className="aeropuerto-content">
+                        <div className="aeropuerto-izq">
+                            <div className="aeropuertosSeleccionados">
+                                <div className="aeropuertosTituloSelected">
+                                    <h3>Aeropuertos Seleccionados</h3>
+                                    {/* Botón para seleccionar todos los aeropuertos */}
+                                    <div className="selectedContent">
+                                        <Button
+                                            className='btn-select-all'
+                                            onClick={handleSelectAllAeropuertos}
+                                            variant={allAeropuertosSelected ? 'danger' : 'primary'}
+                                        >
+                                            {allAeropuertosSelected ? "Deseleccionar Todos" : "Seleccionar Todos"}
+                                        </Button>
+                                        {/* Contador de aeropuertos seleccionados */}
+                                        <p className="aeropuertosSeleccionadosCount">{`${selectedAeropuertos.length} `}</p>
 
+                                    </div>
+                                </div>
+                                <div className="aeropuertoSelectLista">
+                                    {selectedAeropuertos && selectedAeropuertos.length > 0 ? (
+                                        <div className="aeropuertoDetails">
+                                            {selectedAeropuertos.map((aeropuertoId) => {
+                                                const aeropuertoDetails = aeropuertos.find((aeropuerto) => aeropuerto.id === aeropuertoId);
+                                                return (
+                                                    <p key={aeropuertoId} className="aeropuertoDetalle">
+                                                        {`[ ${aeropuertoDetails.id} ] ${aeropuertoDetails.nombre}, ${aeropuertoDetails.nombre_ciudad}, ${aeropuertoDetails.nombre_pais}`}
+                                                    </p>
+                                                );
+                                            })}
+                                        </div>
+                                    ) : (
+                                        <p>No hay aeropuertos seleccionados.</p>
+                                    )}
                                 </div>
                             </div>
-                            <div className="aeropuertoSelectLista">
-                                {selectedAeropuertos && selectedAeropuertos.length > 0 ? (
-                                    <div className="aeropuertoDetails">
-                                        {selectedAeropuertos.map((aeropuertoId) => {
-                                            const aeropuertoDetails = aeropuertos.find((aeropuerto) => aeropuerto.id === aeropuertoId);
-                                            return (
-                                                <p key={aeropuertoId} className="aeropuertoDetalle">
-                                                    {`[ ${aeropuertoDetails.id} ] ${aeropuertoDetails.nombre}, ${aeropuertoDetails.nombre_ciudad}, ${aeropuertoDetails.nombre_pais}`}
-                                                </p>
-                                            );
-                                        })}
-                                    </div>
-                                ) : (
-                                    <p>No hay aeropuertos seleccionados.</p>
-                                )}
+
+                            <div className="aeropuerto-crud">
+                                <AeropuertoCRUD
+                                    selectedAeropuertos={selectedAeropuertos}
+                                    onHandleCancel={handleCancel}
+                                />
                             </div>
                         </div>
-
-                        <div className="aeropuerto-crud">
-                            <AeropuertoCRUD
+                        <div className="aeropuerto-lista">
+                            <AeropuertoLista
+                                aeropuertos={aeropuertos}
                                 selectedAeropuertos={selectedAeropuertos}
-                                onHandleCancel={handleCancel}
+                                onCardClick={handleCardClick}
+                                paises={paises}
+                                ciudades={ciudades}
+                                filtroPais={filtroPais}
+                                filtroCiudad={filtroCiudad}
+                                botonPresionado={botonPresionado}
+                                handleFiltroPais={handleFiltroPais}
+                                handleFiltroCiudad={handleFiltroCiudad}
                             />
                         </div>
                     </div>
-                    <div className="aeropuerto-lista">
-                        <AeropuertoLista
-                            aeropuertos={aeropuertos}
-                            selectedAeropuertos={selectedAeropuertos}
-                            onCardClick={handleCardClick}
-                            paises={paises}
-                            ciudades={ciudades}
-                            filtroPais={filtroPais}
-                            filtroCiudad={filtroCiudad}
-                            botonPresionado={botonPresionado}
-                            handleFiltroPais={handleFiltroPais}
-                            handleFiltroCiudad={handleFiltroCiudad}
-                        />
-                    </div>
-                </div>
+                )}
             </BigBox>
         </div>
     );

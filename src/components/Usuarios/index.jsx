@@ -205,12 +205,13 @@ export default function Usuarios() {
         title={usuariosSelected.length > 0 ? "ELIMINAR" : "ERROR"}
         show={showModal}
         handleClose={() => setShowModal(false)}
-        bodyContent={modalBody}
+        bodyContent={modalBody || ''}
         closeButtonVariant="danger"
         acceptButtonVariant="success"
-        handleAccept={usuariosSelected.length > 0 ? handleAcceptBorrar : undefined}
-        error={(usuariosSelected.length < 1)}
+        handleAccept={usuariosSelected.length > 0 ? handleAcceptBorrar : () => { }}
+        error={usuariosSelected.length < 1}
       />
+
     </div>
   );
 }

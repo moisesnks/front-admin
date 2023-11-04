@@ -7,8 +7,6 @@ export default function AeropuertoCRUD({ selectedAeropuertos, onHandleCancel }) 
 
 
     const handleCancel = () => {
-        console.log("HandleCancel en AeropuertoCRUD");
-        console.log("Seleccion multiple desactivada");
 
         if (onHandleCancel) {
             onHandleCancel();
