@@ -259,7 +259,7 @@ export default function AeropuertosPage() {
                 )}
             </BigBox>
             <ModalComponent
-                title={selectedAeropuertos.length > 1 ? "ELIMINAR" : "ELIMINAR VARIOS"}
+                title={selectedAeropuertos.length > 1 ? "ELIMINAR VARIOS" : "ELIMINAR"}
                 show={showModal}
                 handleClose={() => setShowModal(false)}
                 bodyContent={modalBody || ''}
